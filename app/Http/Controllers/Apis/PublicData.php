@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class PublicData extends Controller
 {
-    //
+    public function testt()
+    {
+        return response()->json(['message' => 'Hello World!!']);
+    }
 }
