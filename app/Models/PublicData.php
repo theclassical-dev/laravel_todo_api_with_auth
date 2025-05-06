@@ -10,7 +10,7 @@ class PublicData extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['uuid, user_id,title, desc,status,due_date,done_date'];
+    protected $fillable = ['uuid', 'user_id', 'title', 'desc', 'status', 'due_date', 'done_date'];
 
     protected static function boot()
     {

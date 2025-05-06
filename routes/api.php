@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Apis\PublicData;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/user', function (Request $request) {
@@ -22,8 +20,15 @@ Route::group(['namespace' => 'App\Http\Controllers\Apis'], function () {
 
     //
     Route::middleware('auth:sanctum')->prefix('user')->group(function () {
-        Route::get('/todos', 'Todo@index');
-        Route::post('/add-todo', 'Todo@addTodo');
+
+        Route::get('/todos', 'TodoCon@index');
+
+        Route::post('/add-todo', 'TodoCon@addTodo');
+
+        Route::put('/todo/{id}', 'TodoCon@updateTodo');
+
+        Route::put('/todo-status/{id}', 'TodoCon@updateStatus');
+
         Route::post('/logout', 'AuthCon@logout');
     });
 });

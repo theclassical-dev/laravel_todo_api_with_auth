@@ -50,9 +50,9 @@ class User extends Authenticatable
         ];
     }
 
-    public function Todo()
+    public function todo()
     {
-        return $this->hasMany(Todo::class, 'user_id');
+        return $this->hasMany(Todo::class);
     }
 
     public function updateLastSeen() {}

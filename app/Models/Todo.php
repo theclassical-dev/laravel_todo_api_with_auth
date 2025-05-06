@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class Todo extends Model
 {
-    protected $fillable = ['uuid, user_id,title, desc,status,due_date,done_date'];
+    protected $fillable = ['uuid', 'user_id', 'title', 'desc', 'status', 'due_date', 'done_date'];
 
     protected static function boot()
     {
@@ -36,7 +36,7 @@ class Todo extends Model
     }
 
 
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
