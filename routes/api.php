@@ -29,6 +29,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Apis'], function () {
 
         Route::put('/todo-status/{id}', 'TodoCon@updateStatus');
 
+        Route::post('/search-todo', 'TodoCon@searchTodo');
+
         Route::post('/logout', 'AuthCon@logout');
     });
 });

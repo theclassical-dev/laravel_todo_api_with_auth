@@ -97,7 +97,10 @@ class TodoCon extends Controller
         if (!$todo) {
             return response()->json(['message' => 'Data not found']);
         }
+
         //update
+        //0 == undone and still not yet due. 1 == done. '-' == todo is due
+
         if ($todo->status == 0 || $todo->status == '0' || $todo->status == '-') {
             $todo->update(['status' => 1]);
         } else {
@@ -106,5 +109,51 @@ class TodoCon extends Controller
 
 
         return response()->json(['message' => 'successful']);
+    }
+
+    public function searchTodo(Request $request)
+    {
+
+        $request->validate([
+            'search' => 'nullable|string',
+        ]);
+
+        //
+        $search = $request->get('search');
+
+        // dd($search);
+
+        //
+        if (empty($search)) {
+            return response()->json([
+                'message' => 'enter a key word'
+            ]);
+        }
+
+
+
+        //
+        $user_id = $this->user->id;
+
+        //
+        $todo = ModelsTodo::where('user_id', $user_id)->where(function ($q) use ($search) {
+            $q->where('title', 'like', "%$search%")
+                ->orWhere('desc', 'like', "%$search%");
+        })->get();
+
+
+        //
+        if ($todo->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No record is found.'
+            ]);
+        }
+
+
+        return response()->json([
+            'success' => true,
+            'data' => $todo
+        ]);
     }
 }
