@@ -10,5 +10,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers\Apis'], function () {
     Route::post('/register', 'AuthCon@register');
-    Route::get('/login', 'AuthCon@login');
+    Route::post('/login', 'AuthCon@login');
 });

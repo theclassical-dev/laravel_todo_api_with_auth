@@ -54,4 +54,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Todo::class, 'user_id');
     }
+
+    public function updateLastSeen() {}
 }
