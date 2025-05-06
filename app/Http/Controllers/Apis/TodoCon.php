@@ -130,8 +130,6 @@ class TodoCon extends Controller
             ]);
         }
 
-
-
         //
         $user_id = $this->user->id;
 
@@ -155,5 +153,22 @@ class TodoCon extends Controller
             'success' => true,
             'data' => $todo
         ]);
+    }
+
+    public function deleteTodo($id)
+    {
+
+        //
+        $todo = $this->user->todo->where('uuid', $id)->first();
+
+        //
+        if (!$todo) {
+            return response()->json(['message' => 'Data not found']);
+        }
+
+        //
+        $todo->delete($todo);
+
+        return response()->json(['message' => 'successful']);
     }
 }

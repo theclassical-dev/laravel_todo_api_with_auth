@@ -31,6 +31,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Apis'], function () {
 
         Route::post('/search-todo', 'TodoCon@searchTodo');
 
+        Route::delete('/delete-todo/{id}', 'TodoCon@deleteTodo');
+
         Route::post('/logout', 'AuthCon@logout');
     });
 });
