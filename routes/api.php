@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['namespace' => 'App\Http\Controllers\Apis'], function () {
+
+    //
     Route::post('/register', 'AuthCon@register');
     Route::post('/login', 'AuthCon@login');
+
+    //
+    Route::middleware('auth:sanctum')->prefix('user')->group(function () {
+        Route::post('/logout', 'AuthCon@logout');
+    });
 });

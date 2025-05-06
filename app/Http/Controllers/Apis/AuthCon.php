@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthCon extends Controller
 {
@@ -62,5 +63,14 @@ class AuthCon extends Controller
             'token' => $token,
             'message' => 'successful'
         ], 200);
+    }
+
+    public function logout(Request $request)
+    {
+
+        //
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json(['message' => 'Logged out successfully']);
     }
 }
