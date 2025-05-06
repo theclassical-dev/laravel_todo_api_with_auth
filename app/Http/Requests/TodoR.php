@@ -11,7 +11,7 @@ class TodoR extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,18 @@ class TodoR extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string',
+            'desc' => 'required|string',
+            'due_date' => 'required|string'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Title is required',
+            'desc.required' => 'Description is required',
+            'due_date.required' => 'Due Date is required',
         ];
     }
 }

@@ -21,6 +21,21 @@ class Todo extends Model
         });
     }
 
+    public function toArray()
+    {
+        $array = parent::toArray();
+
+        $array['id'] = $this->uuid;
+
+        unset($array['uuid']);
+        unset($array['user_id']);
+        unset($array['created_at']);
+        unset($array['updated_at']);
+
+        return $array;
+    }
+
+
     public function User()
     {
         return $this->belongsTo(User::class, 'user_id');

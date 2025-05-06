@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('title');
             $table->string('desc');
-            $table->string('status');
+            $table->string('status')->default(0);
             $table->string('due_date');
-            $table->string('done_date');
+            $table->string('done_date')->nullable();
             $table->timestamps();
         });
     }

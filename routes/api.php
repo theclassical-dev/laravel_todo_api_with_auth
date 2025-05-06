@@ -22,6 +22,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Apis'], function () {
 
     //
     Route::middleware('auth:sanctum')->prefix('user')->group(function () {
+        Route::get('/todos', 'Todo@index');
+        Route::post('/add-todo', 'Todo@addTodo');
         Route::post('/logout', 'AuthCon@logout');
     });
 });
